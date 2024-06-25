@@ -1,6 +1,4 @@
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */
+
 
 import React from 'react';
 import ReactDOM from 'react-dom/client';
@@ -21,6 +19,4 @@ root.render(
 
 reportWebVitals();
 
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */
+

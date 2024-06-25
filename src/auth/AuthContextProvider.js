@@ -1,6 +1,3 @@
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */
 
 import { useReducer } from 'react';
 import AuthContext from './auth-context'
@@ -50,7 +47,3 @@ const AuthContextProvider = props => {
 }
 
 export default AuthContextProvider;
-
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */

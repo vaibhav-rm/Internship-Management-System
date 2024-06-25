@@ -1,6 +1,4 @@
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */
+
 
 import { useReducer } from 'react';
 import StudentContext from './students-context';
@@ -110,6 +108,3 @@ const StudentContextProvider = props => {
 
 export default StudentContextProvider;
 
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */

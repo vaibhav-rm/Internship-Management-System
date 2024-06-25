@@ -1,6 +1,4 @@
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */
+
 
 const reportWebVitals = onPerfEntry => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
@@ -16,6 +14,3 @@ const reportWebVitals = onPerfEntry => {
 
 export default reportWebVitals;
 
-/**
- * Created By : Sangwin Gawande (https://sangw.in)
- */
