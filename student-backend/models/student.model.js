@@ -1,30 +1,31 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const studentSchema = new mongoose.Schema({
+const assessmentSchema = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    obtainableMarks: {
+        type: Number,
+        required: true
+    },
+    obtainedMarks: {
+        type: Number,
+        required: true
+    },
+    date: {
+        type: Date,
+        default: Date.now
+    }
+});
+
+const studentSchema = new Schema({
     first_name: String,
     last_name: String,
     email: String,
     phone: String,
-    assesments: [
-        {
-            title: {
-                type: String,
-                required: true,
-            },
-            date: {
-                type: Date,
-                default: Date.now()
-            },
-            obtainableMarks: {
-                type: Number,
-                required: true
-            },
-            obtainedMarks: {
-                type: Number,
-                required: true
-            }
-        }
-    ]
+    assessments: [assessmentSchema] // Embed assessmentSchema as subdocuments
 });
 
 module.exports = mongoose.model('Student', studentSchema);

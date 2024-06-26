@@ -8,11 +8,13 @@ import StudentContextProvider from './student/StudentContextProvider';
 import List from './student/List';
 import ReportList from './student/ReportList';
 import StudentDetails from './student/StudentDetail';
+import FinalReportCard from './student/FinalReportCard'; //
 
 function App() {
     return (
         <AuthContextProvider>
             <Routes>
+            <Route path="/report" element={<FinalReportCard />} />
                 <Route path='/login' element={<Login />} />
                 <Route path="/" element={<StudentContextProvider><Dashboard /></StudentContextProvider>}>
                     <Route index element={<List />} />
