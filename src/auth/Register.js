@@ -1,12 +1,8 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef } from "react";
 import logo from "./../sangwin-logo.png";
-import './Login.css';
-import AuthContext from "./auth-context";
 import axios from 'axios';
-import { Navigate } from "react-router-dom";
 
-function Login() {
-    const authCtx = useContext(AuthContext);
+function Register() {
     const [isSubmitted, setIsSubmitted] = useState(false);
     const emailRef = useRef();
     const passwordRef = useRef();
@@ -15,23 +11,20 @@ function Login() {
         event.preventDefault();
 
         try {
-            const response = await axios.post('http://localhost:5000/api/login', {
+            const response = await axios.post('http://localhost:5000/api/register', {
                 email: emailRef.current.value,
                 password: passwordRef.current.value
             });
 
-            const token = response.data.token;
-            authCtx.login(token);
+            console.log('Registration successful:', response.data);
             setIsSubmitted(true);
+            // Optionally, you can redirect to login page after successful registration
+            // Replace with your navigation logic
         } catch (error) {
-            console.error('Error logging in:', error);
-            alert('Error logging in. Please try again.');
+            console.error('Error registering:', error);
+            alert('Error registering. Please try again.');
         }
     };
-
-    if (authCtx.isLoggedIn === true) {
-        return <Navigate to="/" />;
-    }
 
     return (
         <div className="min-h-screen bg-gray-100 flex justify-center items-center">
@@ -56,13 +49,12 @@ function Login() {
                     </div>
 
                     <button type="submit" className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 focus:outline-none disabled:opacity-50">
-                        {isSubmitted ? 'Logging in...' : 'Login'}
+                        {isSubmitted ? 'Registering...' : 'Register'}
                     </button>
                 </form>
 
                 <div className="notes-panel mt-4">
                     <h4 className="text-center text-gray-700">Notes:</h4>
-                    <p className="text-center text-sm text-gray-600">Credentials: rathodvaibhav401@gmail.com & admin123</p>
                     <p className="text-center text-sm text-gray-600">All data will be reset when the window is refreshed</p>
                 </div>
             </div>
@@ -70,4 +62,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default Register;

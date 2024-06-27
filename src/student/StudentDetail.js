@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useLocation } from 'react-router-dom';
-import { TextField, Button } from '@mui/material';
+import { TextField, Button, Typography, Paper } from '@mui/material';
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { Viewer, SpecialZoomLevel, Worker } from '@react-pdf-viewer/core';
 import '@react-pdf-viewer/core/lib/styles/index.css';
@@ -118,17 +118,25 @@ const StudentDetail = () => {
 
   // Render student details and assessment form
   return (
-    <div className="student-detail p-4">
+    <div className="max-w-4xl mx-auto px-4 py-8">
       {studentData && (
-        <>
-          <h2 className="text-2xl font-bold mb-2">{studentData.first_name} {studentData.last_name}</h2>
-          <p className="mb-1">Email: {studentData.email}</p>
-          <p className="mb-4">Phone: {studentData.phone}</p>
+        <Paper elevation={3} className="p-6">
+          <Typography variant="h4" component="h2" className="mb-4">
+            {studentData.first_name} {studentData.last_name}
+          </Typography>
+          <Typography variant="body1" className="mb-2">
+            Email: {studentData.email}
+          </Typography>
+          <Typography variant="body1" className="mb-4">
+            Phone: {studentData.phone}
+          </Typography>
 
           {/* Assessment Form */}
-          <form onSubmit={handleAddAssessment} className="mb-4">
-            <h3 className="text-xl font-bold mb-2">Add Assessment</h3>
-            <div className="space-y-2">
+          <form onSubmit={handleAddAssessment} className="mb-6">
+            <Typography variant="h5" className="mb-4">
+              Add Assessment
+            </Typography>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <TextField
                 label="Title"
                 variant="outlined"
@@ -171,14 +179,18 @@ const StudentDetail = () => {
 
           {/* Display Assessments */}
           <div>
-            <h3 className="text-xl font-bold mb-2">Assessments</h3>
-            <ul>
+            <Typography variant="h5" className="mb-4">
+              Assessments
+            </Typography>
+            <ul className="list-disc pl-4">
               {studentData.assessments.length === 0 ? (
-                <li>No assessments available</li>
+                <Typography variant="body1">No assessments available</Typography>
               ) : (
                 studentData.assessments.map((assessment, index) => (
                   <li key={index} className="mb-2">
-                    <span className="font-semibold">{assessment.title}</span> - Score: {assessment.obtainedMarks} / {assessment.obtainableMarks}, Date: {new Date(assessment.date).toLocaleDateString()}
+                    <Typography variant="body1">
+                      <span className="font-semibold">{assessment.title}</span> - Score: {assessment.obtainedMarks} / {assessment.obtainableMarks}, Date: {new Date(assessment.date).toLocaleDateString()}
+                    </Typography>
                   </li>
                 ))
               )}
@@ -190,11 +202,11 @@ const StudentDetail = () => {
             variant="contained"
             color="secondary"
             onClick={generateCertificatePDF}
-            className="mt-4"
+            className="mt-6"
           >
             Generate Certificate PDF
           </Button>
-        </>
+        </Paper>
       )}
     </div>
   );
