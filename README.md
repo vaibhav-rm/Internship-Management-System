@@ -8,7 +8,7 @@ This project was generated with [ReactJS](https://reactjs.org) version 18.1.0.
 NOTE : Project's base URL is set to `/react-student-management`
 
 `basename={'/react-student-management'}` in `index.js` 
-And `package.json` as `"homepage" : "https://blog.sangw.in/react-student-management",`
+And `package.json` 
 
 ## Feature list
 
